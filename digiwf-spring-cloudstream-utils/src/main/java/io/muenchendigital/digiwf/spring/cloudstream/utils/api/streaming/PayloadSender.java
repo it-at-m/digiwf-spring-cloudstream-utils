@@ -11,7 +11,7 @@ import reactor.core.publisher.Sinks;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class GenericPayloadSender {
+public class PayloadSender {
 
     private final Sinks.Many<Message<Object>> messageSink;
 
