@@ -41,7 +41,18 @@ messaging service.
     <li>
       <a href="#getting-started">Getting Started</a>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#minimum-required-spring-boot-annotations">Minimum required spring boot annotations</a></li>
+      </ul>
+      <ul>
+        <li><a href="#sending-messages">Sending messages</a></li>
+      </ul>
+      <ul>
+        <li><a href="#function-routing">Function routing</a></li>
+      </ul>
+</li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -57,10 +68,11 @@ messaging service.
 The goal of this library is streamlining sending and receiving messages from a spring cloudstream eventbus.
 
 Features:
+
 * Choose your own binder in the application context
 * Easily send messages to the eventbus
 * Receive messages from the eventbus and use the built-in function router to route them within your application,
-depending on the type of the message
+  depending on the type of the message
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -70,8 +82,6 @@ This project is built with:
 
 * [Spring Boot](https://spring.io/projects/spring-boot)
 * [Spring Cloud Stream](https://spring.io/projects/spring-cloud-stream)
-
-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -101,8 +111,8 @@ With Gradle:
 implementation group: 'io.muenchendigital.digiwf', name: 'digiwf-spring-cloudstream-starter', version: '${digiwf.version}'
 ```
 
-3. Add your preferred binder (see [Spring Cloud Stream](https://spring.io/projects/spring-cloud-stream)). 
-In this example, we use kafka.
+3. Add your preferred binder (see [Spring Cloud Stream](https://spring.io/projects/spring-cloud-stream)). In this
+   example, we use kafka.
 
 Maven:
 
@@ -122,6 +132,7 @@ implementation group: 'org.springframework.cloud', name: 'spring-cloud-stream-bi
 4. Configure your binder.
 
 __application.properties__
+
 ```
 spring.cloud.stream.kafka.binder.producerProperties.value.serializer=org.springframework.kafka.support.serializer.JsonSerializer
 spring.cloud.stream.kafka.binder.producerProperties.key.serializer=org.springframework.kafka.support.serializer.JsonSerializer
@@ -150,15 +161,16 @@ See <a href="#function-routing">Function Routing</a>
 
 <!-- USAGE EXAMPLES -->
 
-### Usage
+## Usage
 
 The library has several functionalities that can be configured. We have provided examples that show how you can use
 them.
 
-_For more examples, please refer to the [example](https://github.com/it-at-m/digiwf-spring-cloudstream-utils/tree/dev/example)
+_For an example, please refer to
+the [example](https://github.com/it-at-m/digiwf-spring-cloudstream-utils/tree/dev/example)
 folder_
 
-### Minimum necessary spring boot annotations
+### Minimum required spring boot annotations
 
 Listed below is the required Spring boot annotation.
 
@@ -166,24 +178,32 @@ Listed below is the required Spring boot annotation.
 
 ### Sending messages
 
-To send messages you can use the PayloadSender. This will send all messages to the topic specified in your application.properties.
+To send messages you can use the PayloadSender. This will send all messages to the topic specified in your
+application.properties.
 
 application.properties
+
 ```
 spring.cloud.stream.bindings.sendMessage-out-0.destination=<topic>
 ```
 
 <!-- FUNCTION ROUTING -->
+
 ### Function routing
+
 To use the function router, you first have to specify the topic you want to listen in and your groupId.
+
 ```
 spring.cloud.stream.bindings.functionRouter-in-0.group=<groupId>
 spring.cloud.stream.bindings.functionRouter-in-0.destination=<topic>
 ```
+
 Then you will need to link the MessageHeader "TYPE" of incoming messages to methods within your application.
+
 ```
 io.muenchendigital.digiwf.streaming.typeMappings.processMessageType=processMessageMethod
 ```
+
 The built-in function router now tries to correlate and route incoming messages with the Type-Header set to
 "processMessageType" to the "processMessageMethod" method in your application.
 
