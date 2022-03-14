@@ -8,6 +8,9 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Sinks;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -16,10 +19,16 @@ public class PayloadSender {
     private final Sinks.Many<Message<Object>> messageSink;
 
     public void sendPayload(final Object payload, final String type) {
-        final Message<Object> message = MessageBuilder
-                .withPayload(payload)
-                .setHeader(StreamingHeaders.TYPE, type)
-                .build();
+        Map<String, Object> headers = new HashMap<>();
+        headers.put(StreamingHeaders.TYPE, type);
+        MessageHeaders messageHeaders = new MessageHeaders(headers);
+        sendPayload(payload, messageHeaders);
+
+    }
+
+    public void sendPayload(final Object payload, final MessageHeaders messageHeaders) {
+
+        final Message<Object> message = MessageBuilder.createMessage(payload, messageHeaders);
 
         final Sinks.EmitResult emitResult = this.messageSink.tryEmitNext(message);
 
@@ -30,4 +39,5 @@ public class PayloadSender {
         }
         log.debug("Message: {}", message);
     }
+
 }
