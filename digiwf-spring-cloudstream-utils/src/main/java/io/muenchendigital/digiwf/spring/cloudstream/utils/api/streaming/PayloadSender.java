@@ -33,9 +33,9 @@ public class PayloadSender {
         final Sinks.EmitResult emitResult = this.messageSink.tryEmitNext(message);
 
         if (emitResult.isSuccess()) {
-            log.info("The message {} was successfully delivered to the Eventbus.", message.getHeaders().get(MessageHeaders.ID));
+            log.info("The message {} was successfully delivered to the eventbus.", message.getHeaders().get(MessageHeaders.ID));
         } else {
-            log.error("The message {} couldn't be delivered to the Eventbus.", message.getHeaders().get(MessageHeaders.ID));
+            log.error("The message {} couldn't be delivered to the eventbus.", message.getHeaders().get(MessageHeaders.ID));
         }
         log.debug("Message: {}", message);
     }

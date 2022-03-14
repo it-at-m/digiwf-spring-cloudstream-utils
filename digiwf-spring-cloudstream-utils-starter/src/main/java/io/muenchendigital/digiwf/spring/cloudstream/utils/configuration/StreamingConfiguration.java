@@ -8,12 +8,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
+import org.springframework.util.StringUtils;
+
+import static io.muenchendigital.digiwf.spring.cloudstream.utils.api.error.ErrorMessageDefaultListener.FUNCTION_ROUTING_ERROR;
+import static io.muenchendigital.digiwf.spring.cloudstream.utils.api.error.ErrorMessageDefaultListener.MISSING_TYPE_HEADER_ERROR;
 
 @Configuration
 @RequiredArgsConstructor
 @ComponentScan(basePackages = "io.muenchendigital.digiwf.spring.cloudstream.utils")
 @EnableConfigurationProperties(StreamingProperties.class)
 public class StreamingConfiguration {
+
 
     private final StreamingProperties streamingProperties;
 
@@ -26,9 +31,17 @@ public class StreamingConfiguration {
 
             @Override
             public FunctionRoutingResult routingResult(final Message<?> message) {
-                return new FunctionRoutingResult(StreamingConfiguration.this.streamingProperties.getTypeMappings().get((String) message.getHeaders().get(StreamingHeaders.TYPE)));
+                final String functionDefinition;
+
+                if (message.getHeaders().containsKey(StreamingHeaders.TYPE)) {
+                    final String header = (String) message.getHeaders().get(StreamingHeaders.TYPE);
+                    functionDefinition = StreamingConfiguration.this.streamingProperties.getTypeMappings().getOrDefault(header, FUNCTION_ROUTING_ERROR);
+                } else {
+                    functionDefinition = MISSING_TYPE_HEADER_ERROR;
+                }
+
+                return new FunctionRoutingResult(functionDefinition);
             }
         };
     }
-
 }

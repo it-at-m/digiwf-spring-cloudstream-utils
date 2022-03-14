@@ -13,7 +13,6 @@ public class ProcessIncomingMessage {
 
     @Bean
     public Consumer<Message<Object>> processMessage() {
-
         return message -> log.info(message.toString());
     }
 
