@@ -89,7 +89,7 @@ This project is built with:
 
 ## Getting started
 
-_Below is an example of how you can installing and setup up your service_
+_Below is an example of how you can install and set up your service_
 
 1. Use the spring initalizer and create a Spring Boot application with `Spring Web`
    dependencies [https://start.spring.io](https://start.spring.io)
