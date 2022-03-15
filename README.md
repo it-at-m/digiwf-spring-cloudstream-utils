@@ -11,7 +11,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/it-at-m/digiwf-s3-integration">
+  <a href="https://github.com/it-at-m/digiwf-spring-cloudstream-utils">
     <img src="images/logo.png" alt="Logo" height="200">
   </a>
 
@@ -93,7 +93,7 @@ _Below is an example of how you can installing and setup up your service_
 
 1. Use the spring initalizer and create a Spring Boot application with `Spring Web`
    dependencies [https://start.spring.io](https://start.spring.io)
-2. Add the digiwf-s3-integration dependency
+2. Add the digiwf-spring-cloudstream-utils dependency
 
 With Maven:
 
@@ -246,24 +246,24 @@ it@m - opensource@muenchendigital.io
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/it-at-m/digiwf-s3-integration.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/it-at-m/digiwf-spring-cloudstream-utils.svg?style=for-the-badge
 
-[contributors-url]: https://github.com/it-at-m/digiwf-s3-integration/graphs/contributors
+[contributors-url]: https://github.com/it-at-m/digiwf-spring-cloudstream-utils/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/it-at-m/digiwf-s3-integration.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/it-at-m/digiwf-spring-cloudstream-utils.svg?style=for-the-badge
 
-[forks-url]: https://github.com/it-at-m/digiwf-s3-integration/network/members
+[forks-url]: https://github.com/it-at-m/digiwf-spring-cloudstream-utils/network/members
 
-[stars-shield]: https://img.shields.io/github/stars/it-at-m/digiwf-s3-integration.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/it-at-m/digiwf-spring-cloudstream-utils.svg?style=for-the-badge
 
-[stars-url]: https://github.com/it-at-m/digiwf-s3-integration/stargazers
+[stars-url]: https://github.com/it-at-m/digiwf-spring-cloudstream-utils/stargazers
 
-[issues-shield]: https://img.shields.io/github/issues/it-at-m/digiwf-s3-integration.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/it-at-m/digiwf-spring-cloudstream-utils.svg?style=for-the-badge
 
-[issues-url]: https://github.com/it-at-m/digiwf-s3-integration/issues
+[issues-url]: https://github.com/it-at-m/digiwf-spring-cloudstream-utils/issues
 
-[license-shield]: https://img.shields.io/github/license/it-at-m/digiwf-s3-integration.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/it-at-m/digiwf-spring-cloudstream-utils.svg?style=for-the-badge
 
-[license-url]: https://github.com/it-at-m/digiwf-s3-integration/blob/master/LICENSE
+[license-url]: https://github.com/it-at-m/digiwf-spring-cloudstream-utils/blob/main/LICENSE
 
 [product-screenshot]: images/screenshot.png
