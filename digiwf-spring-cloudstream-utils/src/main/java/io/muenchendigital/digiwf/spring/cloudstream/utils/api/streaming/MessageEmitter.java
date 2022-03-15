@@ -9,7 +9,7 @@ import reactor.core.publisher.Sinks;
 import java.util.function.Supplier;
 
 @Configuration
-public class EventEmitter {
+public class MessageEmitter {
 
     @Bean
     public Sinks.Many<Message<Object>> sendMessageSink() {

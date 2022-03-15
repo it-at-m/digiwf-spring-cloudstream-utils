@@ -19,17 +19,14 @@ public class PayloadSender {
     private final Sinks.Many<Message<Object>> messageSink;
 
     public void sendPayload(final Object payload, final String type) {
-        Map<String, Object> headers = new HashMap<>();
+        final Map<String, Object> headers = new HashMap<>();
         headers.put(StreamingHeaders.TYPE, type);
-        MessageHeaders messageHeaders = new MessageHeaders(headers);
+        final MessageHeaders messageHeaders = new MessageHeaders(headers);
         sendPayload(payload, messageHeaders);
-
     }
 
     public void sendPayload(final Object payload, final MessageHeaders messageHeaders) {
-
         final Message<Object> message = MessageBuilder.createMessage(payload, messageHeaders);
-
         final Sinks.EmitResult emitResult = this.messageSink.tryEmitNext(message);
 
         if (emitResult.isSuccess()) {
