@@ -65,7 +65,7 @@ messaging service.
 
 ## About The Project
 
-The goal of this library is streamlining sending and receiving messages from a spring cloudstream eventbus.
+The goal of this library is the streamlining of sending and receiving messages from a spring cloudstream eventbus.
 
 Features:
 
