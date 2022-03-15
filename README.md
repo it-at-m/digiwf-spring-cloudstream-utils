@@ -65,7 +65,7 @@ messaging service.
 
 ## About The Project
 
-The goal of this library is the streamlining of sending and receiving messages from a spring cloudstream eventbus.
+The goal of this library is the streamlining of sending and receiving messages to / from a spring cloudstream eventbus.
 
 Features:
 
@@ -198,7 +198,7 @@ spring.cloud.stream.bindings.functionRouter-in-0.group=<groupId>
 spring.cloud.stream.bindings.functionRouter-in-0.destination=<topic>
 ```
 
-Then you will need to link the MessageHeader "TYPE" of incoming messages to methods within your application.
+Then you will need to link the MessageHeader "type" of incoming messages to methods within your application.
 
 ```
 io.muenchendigital.digiwf.streaming.typeMappings.processMessageType=processMessageMethod
