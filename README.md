@@ -100,7 +100,7 @@ With Maven:
 ```
    <dependency>
         <groupId>io.muenchendigital.digiwf</groupId>
-        <artifactId>digiwf-spring-cloudstream-starter</artifactId>
+        <artifactId>digiwf-spring-cloudstream-utils-starter</artifactId>
         <version>${digiwf.version}</version>
    </dependency>
 ```
@@ -108,7 +108,7 @@ With Maven:
 With Gradle:
 
 ```
-implementation group: 'io.muenchendigital.digiwf', name: 'digiwf-spring-cloudstream-starter', version: '${digiwf.version}'
+implementation group: 'io.muenchendigital.digiwf', name: 'digiwf-spring-cloudstream-utils-starter', version: '${digiwf.version}'
 ```
 
 3. Add your preferred binder (see [Spring Cloud Stream](https://spring.io/projects/spring-cloud-stream)). In this
