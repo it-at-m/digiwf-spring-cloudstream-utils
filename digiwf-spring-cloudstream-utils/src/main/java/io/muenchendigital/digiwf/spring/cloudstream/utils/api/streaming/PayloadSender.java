@@ -18,14 +18,14 @@ public class PayloadSender {
 
     private final Sinks.Many<Message<Object>> messageSink;
 
-    public void sendPayload(final Object payload, final String type) {
+    public boolean sendPayload(final Object payload, final String type) {
         final Map<String, Object> headers = new HashMap<>();
         headers.put(StreamingHeaders.TYPE, type);
         final MessageHeaders messageHeaders = new MessageHeaders(headers);
-        sendPayload(payload, messageHeaders);
+        return sendPayload(payload, messageHeaders);
     }
 
-    public void sendPayload(final Object payload, final MessageHeaders messageHeaders) {
+    public boolean sendPayload(final Object payload, final MessageHeaders messageHeaders) {
         final Message<Object> message = MessageBuilder.createMessage(payload, messageHeaders);
         final Sinks.EmitResult emitResult = this.messageSink.tryEmitNext(message);
 
@@ -35,6 +35,7 @@ public class PayloadSender {
             log.error("The message {} couldn't be delivered to the eventbus.", message.getHeaders().get(MessageHeaders.ID));
         }
         log.debug("Message: {}", message);
+        return emitResult.isSuccess();
     }
 
 }

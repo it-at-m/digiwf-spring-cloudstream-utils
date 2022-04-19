@@ -7,5 +7,7 @@ import lombok.NoArgsConstructor;
 public final class StreamingHeaders {
 
     public static final String TYPE = "type";
+    public static final String DIGIWF_MESSAGE_NAME = "digiwf.messagename";
+    public static final String DIGIWF_PROCESS_INSTANCE_ID = "digiwf.processinstanceid";
 
 }
