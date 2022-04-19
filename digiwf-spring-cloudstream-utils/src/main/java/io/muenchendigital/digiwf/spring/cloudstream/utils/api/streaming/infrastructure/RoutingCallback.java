@@ -1,4 +1,4 @@
-package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming;
+package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.function.context.MessageRoutingCallback;

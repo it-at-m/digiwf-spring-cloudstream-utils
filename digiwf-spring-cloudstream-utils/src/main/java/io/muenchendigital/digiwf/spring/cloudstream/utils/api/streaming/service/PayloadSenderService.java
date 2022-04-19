@@ -1,5 +1,6 @@
-package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming;
+package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.service;
 
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure.StreamingHeaders;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
@@ -14,7 +15,7 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class PayloadSender {
+public class PayloadSenderService {
 
     private final Sinks.Many<Message<Object>> messageSink;
 

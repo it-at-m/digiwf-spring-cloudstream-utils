@@ -1,6 +1,6 @@
 package io.muenchendigital.digiwf.spring.cloudstream.utils.api.error;
 
-import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.StreamingHeaders;
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure.StreamingHeaders;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.Message;
