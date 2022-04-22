@@ -17,6 +17,11 @@ public class StreamingConfiguration {
 
     private final StreamingProperties streamingProperties;
 
+    /**
+     * Default router, using the typeMappings configured in your application.yml.
+     * You can define another router in your application, hence why @ConditionalOnMissingBean.
+     * @return the router
+     */
     @Bean
     @ConditionalOnMissingBean
     public MessageRoutingCallback customRouter() {

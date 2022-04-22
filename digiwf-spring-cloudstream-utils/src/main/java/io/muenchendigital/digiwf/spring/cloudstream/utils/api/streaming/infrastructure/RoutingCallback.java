@@ -14,6 +14,14 @@ public class RoutingCallback implements MessageRoutingCallback {
 
     private final Map<String, String> typeMappings;
 
+    /**
+     * Router for messages.
+     * Either routes the message to the corresponding function (if present), or, in case the TYPE header is unknown or unset,
+     * to the corresponding error functions.
+     * unknown or unset.
+     * @param message incoming message
+     * @return FunctionRoutingResult as described above
+     */
     @Override
     public FunctionRoutingResult routingResult(final Message<?> message) {
         final String functionDefinition;
