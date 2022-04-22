@@ -93,7 +93,7 @@ _Below is an example of how you can install and set up your service_
 
 1. Use the spring initalizer and create a Spring Boot application with `Spring Web`
    dependencies [https://start.spring.io](https://start.spring.io)
-2. Add the digiwf-spring-cloudstream-utils dependency
+2. Add the digiwf-spring-cloudstream-utils-starter dependency
 
 With Maven:
 
