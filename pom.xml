@@ -7,7 +7,7 @@
     <groupId>io.muenchendigital.digiwf</groupId>
     <artifactId>digiwf-spring-cloudstream-utils-parent</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
