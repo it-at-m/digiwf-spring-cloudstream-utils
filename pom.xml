@@ -8,6 +8,9 @@
     <artifactId>digiwf-spring-cloudstream-utils-parent</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1</version>
+    <name>digiwf-spring-cloudstream-utils-parent</name>
+    <description>Cloudstream Utils used by DigiWF</description>
+    <url>https://github.com/it-at-m/digiwf-spring-cloudstream-utils</url>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
