@@ -26,7 +26,7 @@
     <modules>
         <module>digiwf-spring-cloudstream-utils</module>
         <module>digiwf-spring-cloudstream-utils-starter</module>
-        <module>example</module>
+        <module>example-spring-cloudstream-utils</module>
     </modules>
 
     <dependencyManagement>
