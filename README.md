@@ -189,23 +189,45 @@ spring.cloud.stream.bindings.sendMessage-out-0.destination=<topic>
 
 <!-- FUNCTION ROUTING -->
 
-### Function routing
+### Function routing configuration
 
-To use the function router, you first have to specify the topic you want to listen in and your groupId.
+To use the function router, you first have to specify the topic you want to listen in and your groupId. We have exactly one topic for each sink. That's the configuration in your `application.yml`:
 
-```
+``` yml
 spring.cloud.stream.bindings.functionRouter-in-0.group=<groupId>
 spring.cloud.stream.bindings.functionRouter-in-0.destination=<topic>
 ```
 
-Then you will need to link the MessageHeader "type" of incoming messages to methods within your application.
+For each operation we have a specific identifier called "type". This "type" (you can define it yourself) has to be set in the MessageHeader property called `type`. Then you will need to link the MessageHeader `type` of incoming messages to methods within your application in your `application.yml` file.
 
-```
-io.muenchendigital.digiwf.streaming.typeMappings.processMessageType=processMessageMethod
+``` yml
+io.muenchendigital.digiwf.streaming.typeMappings.<processMessageType_1>=<processMessageMethod_1>
+io.muenchendigital.digiwf.streaming.typeMappings.<processMessageType_2>=<processMessageMethod_2>
+io.muenchendigital.digiwf.streaming.typeMappings.<processMessageType_3>=<processMessageMethod_3>
+...
 ```
 
 The built-in function router now tries to correlate and route incoming messages with the Type-Header set to
 "processMessageType" to the "processMessageMethod" method in your application.
+
+#### Static function routing
+
+If you don't want to make your message to function routing configurable, you can overwrite the routing in Spring. Use for this a configuration class. If you write a spring starter, you should do this in a `AutoConfiguration.class`.  
+
+``` java
+@Configuration
+@AutoConfigureBefore({StreamingConfiguration.class})
+public class MyConfiguration {
+
+    @Bean
+    @ConditionalOnMissingBean
+    public MessageRoutingCallback myRouter() {
+        final Map<String, String> typeMappings = new HashMap<>();
+        typeMappings.put(MESSAGE_TYPE_HEADER, MESSAGE_METHOD);
+        return new RoutingCallback(typeMappings);
+    }
+}
+```
 
 <!-- CONTRIBUTING -->
 
