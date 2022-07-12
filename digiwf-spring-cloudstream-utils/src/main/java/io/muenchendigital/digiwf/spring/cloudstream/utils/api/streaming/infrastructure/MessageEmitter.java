@@ -1,6 +1,7 @@
 package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure;
 
 import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.CorrelateMessageDto;
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.ErrorDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
@@ -47,6 +48,25 @@ public class MessageEmitter {
      */
     @Bean
     public Supplier<Flux<Message<CorrelateMessageDto>>> sendCorrelateMessage(final Sinks.Many<Message<CorrelateMessageDto>> sink) {
+        return sink::asFlux;
+    }
+
+    /**
+     * Sink for sending errors
+     * @return Sink
+     */
+    @Bean
+    public Sinks.Many<Message<ErrorDto>> sendErrorSink() {
+        return Sinks.many().unicast().onBackpressureBuffer();
+    }
+
+    /**
+     * Supplier for sending errors
+     * @param sink corresponding sink
+     * @return supplier
+     */
+    @Bean
+    public Supplier<Flux<Message<ErrorDto>>> sendError(final Sinks.Many<Message<ErrorDto>> sink) {
         return sink::asFlux;
     }
 
