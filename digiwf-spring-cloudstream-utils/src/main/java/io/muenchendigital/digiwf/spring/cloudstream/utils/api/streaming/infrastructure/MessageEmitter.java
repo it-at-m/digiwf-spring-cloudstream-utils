@@ -1,7 +1,8 @@
 package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure;
 
 import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.CorrelateMessageDto;
-import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.ErrorDto;
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.BpmnErrorDto;
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.IncidentDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
@@ -56,7 +57,7 @@ public class MessageEmitter {
      * @return Sink
      */
     @Bean
-    public Sinks.Many<Message<ErrorDto>> sendErrorSink() {
+    public Sinks.Many<Message<BpmnErrorDto>> sendBpmnErrorSink() {
         return Sinks.many().unicast().onBackpressureBuffer();
     }
 
@@ -66,7 +67,26 @@ public class MessageEmitter {
      * @return supplier
      */
     @Bean
-    public Supplier<Flux<Message<ErrorDto>>> sendError(final Sinks.Many<Message<ErrorDto>> sink) {
+    public Supplier<Flux<Message<BpmnErrorDto>>> sendBpmnError(final Sinks.Many<Message<BpmnErrorDto>> sink) {
+        return sink::asFlux;
+    }
+
+    /**
+     * Sink for sending errors
+     * @return Sink
+     */
+    @Bean
+    public Sinks.Many<Message<IncidentDto>> sendIncidentSink() {
+        return Sinks.many().unicast().onBackpressureBuffer();
+    }
+
+    /**
+     * Supplier for sending errors
+     * @param sink corresponding sink
+     * @return supplier
+     */
+    @Bean
+    public Supplier<Flux<Message<IncidentDto>>> sendIncident(final Sinks.Many<Message<IncidentDto>> sink) {
         return sink::asFlux;
     }
 

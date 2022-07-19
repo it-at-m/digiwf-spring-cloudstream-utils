@@ -1,6 +1,6 @@
 package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.service;
 
-import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.ErrorDto;
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.IncidentDto;
 import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure.StreamingHeaders;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,42 +10,42 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Sinks;
 
+import static io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure.StreamingHeaders.DIGIWF_MESSAGE_NAME;
 import static io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure.StreamingHeaders.DIGIWF_PROCESS_INSTANCE_ID;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ErrorService {
+public class IncidentService {
 
-    private static final String MESSAGE_TYPE = "error";
+    private static final String MESSAGE_TYPE = "incident";
 
-    private final Sinks.Many<Message<ErrorDto>> errorSink;
+    private final Sinks.Many<Message<IncidentDto>> incidentSink;
 
     /**
-     * TODO: Sends an error to the bus that can be correlated by process instance ID.
+     * Sends an incident to the bus that will be forwarded to the process instance.
      *
      * @param messageHeaders   The incoming messages' header.
-     * @param errorCode
-     * @param errorMessage
+     * @param errorMessage the specific error message
      */
-    public boolean sendError(final MessageHeaders messageHeaders, final String errorCode, final String errorMessage) {
-        final ErrorDto.ErrorDtoBuilder builder = ErrorDto.builder()
+    public boolean sendIncident(final MessageHeaders messageHeaders, final String errorMessage) {
+        final IncidentDto.IncidentDtoBuilder builder = IncidentDto.builder()
                 .processInstanceId((String) messageHeaders.get(DIGIWF_PROCESS_INSTANCE_ID))
-                .errorCode(errorCode)
+                .messageName((String) messageHeaders.get(DIGIWF_MESSAGE_NAME))
                 .errorMessage(errorMessage);
 
 
-        final Message<ErrorDto> message = MessageBuilder
+        final Message<IncidentDto> message = MessageBuilder
                 .withPayload(builder.build())
                 .setHeader(StreamingHeaders.TYPE, MESSAGE_TYPE)
                 .build();
 
-        final Sinks.EmitResult emitResult = this.errorSink.tryEmitNext(message);
+        final Sinks.EmitResult emitResult = this.incidentSink.tryEmitNext(message);
 
         if (emitResult.isSuccess()) {
-            log.info("The error {} was successfully delivered to the eventbus.", message.getHeaders().get(MessageHeaders.ID));
+            log.info("The incident {} was successfully delivered to the eventbus.", message.getHeaders().get(MessageHeaders.ID));
         } else {
-            log.error("The error {} couldn't be delivered to the eventbus.", message.getHeaders().get(MessageHeaders.ID));
+            log.error("The incident {} couldn't be delivered to the eventbus.", message.getHeaders().get(MessageHeaders.ID));
         }
         log.debug("Message: {}", message);
         return emitResult.isSuccess();

@@ -10,9 +10,9 @@ import javax.validation.constraints.NotNull;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class ErrorDto {
+public class BpmnErrorDto {
 
-    @Nullable
+    @NotNull
     public String processInstanceId;
 
     @NotNull
