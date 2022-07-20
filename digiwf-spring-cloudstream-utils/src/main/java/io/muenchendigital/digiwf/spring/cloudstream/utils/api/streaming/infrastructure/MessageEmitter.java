@@ -1,8 +1,8 @@
 package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure;
 
-import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.CorrelateMessageDto;
-import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.BpmnErrorDto;
-import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.IncidentDto;
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.message.dto.CorrelateMessageDto;
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.bpmnerror.dto.BpmnErrorDto;
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.incident.dto.IncidentDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;

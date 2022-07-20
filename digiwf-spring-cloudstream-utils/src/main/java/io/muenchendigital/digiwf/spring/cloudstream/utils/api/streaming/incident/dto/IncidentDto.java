@@ -1,4 +1,4 @@
-package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto;
+package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.incident.dto;
 
 import lombok.*;
 import org.springframework.lang.Nullable;

@@ -1,6 +1,6 @@
-package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.service;
+package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.bpmnerror.service;
 
-import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.BpmnErrorDto;
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.bpmnerror.dto.BpmnErrorDto;
 import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure.StreamingHeaders;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
