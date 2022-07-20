@@ -1,6 +1,6 @@
-package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.service;
+package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.message.service;
 
-import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto.CorrelateMessageDto;
+import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.message.dto.CorrelateMessageDto;
 import io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.infrastructure.StreamingHeaders;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

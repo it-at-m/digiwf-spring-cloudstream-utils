@@ -18,7 +18,7 @@
 <h3 align="center">DigiWF Spring Cloudstream Utils</h3>
 
   <p align="center">
-    This is a Spring Boot Starter library to send and receive messages to / from a Spring Cloudstream compatible
+    This is a Spring Boot Starter library to send and receive messages and errors to / from a Spring Cloudstream compatible
 messaging service.
     <a href="https://github.com/it-at-m/digiwf-spring-cloudstream-utils/issues">Report Bug</a>
     ·
@@ -70,7 +70,7 @@ The goal of this library is the streamlining of sending and receiving messages t
 Features:
 
 * Choose your own binder in the application context
-* Easily send messages to the eventbus
+* Easily send messages and errors to the eventbus
 * Receive messages from the eventbus and use the built-in function router to route them within your application,
   depending on the type of the message
 
@@ -141,7 +141,7 @@ spring.cloud.stream.kafka.binder.consumerProperties.value.deserializer=org.sprin
 spring.cloud.stream.kafka.binder.consumerProperties.auto.offset.reset=latest
 spring.cloud.stream.kafka.binder.configuration.security.protocol=SSL
 spring.kafka.consumer.properties.spring.json.trusted.packages=*
-spring.cloud.function.definition=functionRouter;sendMessage;
+spring.cloud.function.definition=functionRouter;sendMessage;sendCorrelateMessage;sendBpmnError;sendIncident;
 
 spring.cloud.stream.kafka.binder.brokers=<brokerUrl>
 
@@ -185,6 +185,18 @@ application.properties
 
 ```
 spring.cloud.stream.bindings.sendMessage-out-0.destination=<topic>
+```
+
+### Sending bpmn errors and incidents
+
+To send errors you habe to specify the topics in your
+application.properties.
+
+application.properties
+
+```
+  cloud.stream.bindings.sendBpmnError-out-0.destination: <topic>
+  cloud.stream.bindings.sendIncident-out-0.destination: <topic>
 ```
 
 <!-- FUNCTION ROUTING -->

@@ -1,4 +1,4 @@
-package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.dto;
+package io.muenchendigital.digiwf.spring.cloudstream.utils.api.streaming.message.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
