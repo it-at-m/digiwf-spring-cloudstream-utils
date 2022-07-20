@@ -22,7 +22,7 @@ public class BpmnErrorService {
     private final Sinks.Many<Message<BpmnErrorDto>> bpmnErrorSink;
 
     /**
-     * TODO: Sends an error to the bus that can be correlated by process instance ID.
+     * Sends an error to the bus that can be correlated by process instance ID.
      *
      * @param messageHeaders   The incoming messages' header.
      * @param errorCode the specific error code
